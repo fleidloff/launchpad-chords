@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Voice-led jazz chord progressions drawn on the Launchpad X chromatic fourths grid.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎹</text></svg>">
+<title>Fourths — jazz voicings for Launchpad X</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Fourths</h1>
+  <p>Voice-led jazz progressions, drawn on the Launchpad X chromatic grid. C sits bottom left, each row up is a fourth.</p>
+</header>
+
+<div class="controls">
+  <label class="f">Progression<select id="prog"></select></label>
+  <label class="f">Key<span class="keybox"><button id="kdn" aria-label="Key down a fourth">♭</button><select id="key"></select><button id="kup" aria-label="Key up a fourth">♯</button></span></label>
+  <label class="f">Voicing<select id="style">
+    <option value="rootless">Rootless, one hand</option>
+    <option value="root">Root on the bottom, one hand</option>
+    <option value="two">Bass + rootless, two hands</option>
+  </select></label>
+  <div class="f" style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)">Pad labels
+    <div class="seg" role="group" aria-label="Pad labels">
+      <button data-l="finger" aria-pressed="true">Fingers</button><button data-l="degree" aria-pressed="false">Degrees</button><button data-l="note" aria-pressed="false">Notes</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="info" aria-live="polite">
+    <h2 class="sym" id="sym"></h2>
+    <p class="func" id="func"></p>
+    <div class="vary">
+      <div class="pair" role="group" aria-label="Colour"><button id="dark">Darker</button><button id="bright">Brighter</button></div>
+      <div class="pair" role="group" aria-label="Complexity"><button id="simple">Simpler</button><button id="rich">Richer</button></div>
+      <button class="reset" id="reset">Reset chord</button>
+    </div>
+    <div class="tones" id="tones"></div>
+    <div class="nav">
+      <button id="prev">Previous</button>
+      <button id="next" class="primary">Next</button>
+    </div>
+  </section>
+  <section>
+    <div class="plate" id="big"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+</main>
+
+<section class="strip">
+  <h2 id="striph">The whole progression</h2>
+  <div class="cells" id="cells"></div>
+</section>
+
+<footer>
+  <kbd>←</kbd> <kbd>→</kbd> step through chords, <kbd>↑</kbd> <kbd>↓</kbd> brighter or darker, <kbd>+</kbd> <kbd>−</kbd> richer or simpler, <kbd>K</kbd> next key round the cycle of fourths.
+  Changing one chord re-plans the voice leading for the whole progression, and your changes stay when you switch key. Fingerings are a starting point; if a shape feels better another way, trust your hand.
+</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
